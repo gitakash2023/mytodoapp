@@ -3,15 +3,24 @@ import React, { useState } from "react";
 function App() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState();
+  const [binTodos, setBinTodos] = useState([]);
   const onchangeHandler = (e) => {
     setInput(e.target.value);
   };
-  const onclickHandler = (e) => {
-    // e.preventDefault();
+  const onsubmitHandler = () => {
     setTodos([...todos, input]);
     setInput("");
   };
-  console.log(todos);
+
+  const deleteTodo = (index) => {
+    // Created a copy of the todos array
+    const updatedTodos = [...todos];
+    // Removed the todo at the specified index
+    const deletedTodo = updatedTodos.splice(index, 1);
+    // Updated the state with the new array
+    setTodos(updatedTodos);
+    setBinTodos([...binTodos, deletedTodo]);
+  };
 
   return (
     <>
@@ -36,7 +45,7 @@ function App() {
               />
             </div>
             <div>
-              <button style={{ marginLeft: "20px" }} onClick={onclickHandler}>
+              <button style={{ marginLeft: "20px" }} onClick={onsubmitHandler}>
                 add todo
               </button>
             </div>
@@ -46,16 +55,30 @@ function App() {
               {todos.map((obj) => (
                 <li
                   style={{
-                    width: "400px",
-                    backgroundColor: "blue",
-                    marginTop: "20px",
-                    padding: "20px",
+                    maxWidth: "400px",
+
+                    marginTop: "10px",
                   }}
                 >
                   {obj}
+                  <button onClick={deleteTodo} style={{ marginLeft: "5px" }}>
+                    delete
+                  </button>
                 </li>
               ))}
             </ul>
+          </div>
+          <div>
+            <div>
+              <h1>Deleted Todos list</h1>
+            </div>
+            <div>
+              <ul>
+                {binTodos.map((obj) => (
+                  <li>{obj}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
