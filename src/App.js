@@ -24,60 +24,65 @@ function App() {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div>
+      <div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <div>
-            <h1>Todo App</h1>
-          </div>
-          <div style={{ display: "flex" }}>
             <div>
-              <input
-                type="text"
-                placeholder="enter your todo"
-                value={input}
-                onChange={onchangeHandler}
-              />
+              <h1>Todo App</h1>
             </div>
-            <div>
-              <button style={{ marginLeft: "20px" }} onClick={onsubmitHandler}>
-                add todo
-              </button>
-            </div>
-          </div>
-          <div style={{}}>
-            <ul>
-              {todos.map((obj) => (
-                <li
-                  style={{
-                    maxWidth: "400px",
-
-                    marginTop: "10px",
-                  }}
+            <div style={{ display: "flex" }}>
+              <div>
+                <input
+                  type="text"
+                  placeholder="enter your todo"
+                  value={input}
+                  onChange={onchangeHandler}
+                />
+              </div>
+              <div>
+                <button
+                  style={{ marginLeft: "20px" }}
+                  onClick={onsubmitHandler}
                 >
-                  {obj}
-                  <button onClick={deleteTodo} style={{ marginLeft: "5px" }}>
-                    delete
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <div>
-              <h1>Deleted Todos list</h1>
+                  add todo
+                </button>
+              </div>
             </div>
-            <div>
+            <div style={{}}>
               <ul>
-                {binTodos.map((obj) => (
-                  <li>{obj}</li>
+                {todos.map((obj) => (
+                  <li
+                    style={{
+                      maxWidth: "400px",
+
+                      marginTop: "10px",
+                    }}
+                  >
+                    {obj}
+                    <button onClick={deleteTodo} style={{ marginLeft: "5px" }}>
+                      delete
+                    </button>
+                  </li>
                 ))}
               </ul>
+            </div>
+            <div>
+              <div>
+                <h1>Deleted Todos list</h1>
+              </div>
+              <div>
+                <ul>
+                  {binTodos.map((obj) => (
+                    <li>{obj}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
