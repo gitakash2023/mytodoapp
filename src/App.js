@@ -49,7 +49,7 @@ function App() {
                     width: "400px",
                     backgroundColor: "blue",
                     marginTop: "20px",
-                    padding: "10px",
+                    padding: "20px",
                   }}
                 >
                   {obj}
